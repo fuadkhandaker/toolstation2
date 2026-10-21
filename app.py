@@ -740,11 +740,7 @@ if active_section == 'QR labels':
                             pdf.showPage()
                         p=n % 30
                         col, row=p % 3, p // 3
-                        # Printer alignment correction: shift the complete label artwork
-                        # 1/16 inch left so QR and border sit centrally on Avery 8160 stock.
-                        # Keep label dimensions, pitch, text layout and vertical position unchanged.
-                        horizontal_alignment_offset = -0.0625 * 72
-                        x=left_margin+col*col_pitch+horizontal_alignment_offset
+                        x=left_margin+col*col_pitch
                         y=ph-top_margin-(row+1)*row_pitch
                         r=tools[tools.tool_id==tid].iloc[0]
                         qr=qrcode.make("TOOL-ID:"+tid)
